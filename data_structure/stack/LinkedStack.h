@@ -47,7 +47,6 @@ template<typename T>
 T LinkedStack<T>::pop()
 {
   if(stack_size == 0){
-    std::cout << "stack is empty" << std::endl;
     throw "stack is empty";
   }
 
