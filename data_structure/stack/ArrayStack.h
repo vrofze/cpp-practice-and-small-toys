@@ -36,8 +36,11 @@ ArrayStack<T>::ArrayStack(int length) : length(length)
 template<typename T>
 T ArrayStack<T>::pop()
 {
-  if (length == 0)
+  if (top == -1){
     throw "stack is empty";
+    T* data = new T;
+    return *data;
+  }
 
   T data = stack[top--];
   stack[top + 1].~T();
