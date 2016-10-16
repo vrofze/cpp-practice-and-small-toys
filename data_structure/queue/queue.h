@@ -10,8 +10,8 @@ class Queue
   virtual int size() const = 0;
   virtual T& front() = 0; // 返回头元素的引用
   virtual T& back() = 0; // 返回尾元素的引用
-  virtual void pop() = 0; // 删除首元素
-  virtual void push(const T& element) const = 0; // 把元素element加入队尾
+  virtual T pop() = 0; // 删除并返回首元素
+  virtual void push(const T& element) = 0; // 把元素element加入队尾
 };
 
 #endif
