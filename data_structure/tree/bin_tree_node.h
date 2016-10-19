@@ -10,6 +10,11 @@ struct BinTreeNode
   {
     left = right = nullptr;
   }
+  BinTreeNode(const T& t)
+  {
+    element = t;
+    left = right = nullptr;
+  }
   BinTreeNode(const BinTreeNode& node)
   {
     element = node.element;
@@ -18,7 +23,7 @@ struct BinTreeNode
   }
   BinTreeNode(const T element, BinTreeNode<T> * left, BinTreeNode<T>* right)
   {
-    this->element(element);
+    this->element = element;
     this->left = left;
     this->right = right;
   }
