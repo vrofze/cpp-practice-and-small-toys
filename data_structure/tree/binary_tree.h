@@ -2,6 +2,7 @@
 #define BINARY_TREE_H
 
 #include "bin_tree_node.h"
+#include <iostream>
 
 template<class T>
 class BinaryTree
@@ -9,7 +10,7 @@ class BinaryTree
  public:
   virtual ~BinaryTree() { }
   virtual bool empty() const = 0;
-  virtual int size() const = 0;
+  virtual size_t size() const = 0;
 
   // 二叉树的操作均基于遍历
   // 参数为int (*) (T*)函数指针,通过遍历执行操作

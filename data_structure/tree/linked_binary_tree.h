@@ -176,7 +176,7 @@ class LinkedBinaryTree: public BinaryTree<BinTreeNode<T> >
   ~LinkedBinaryTree() { erase(); }
 
   bool empty() const { return tree_size == 0; }
-  int size() const { return tree_size; }
+  size_t size() const { return tree_size; }
   void MakeTree();
   void PreOrder(void (*visit)(BinTreeNode<T> *))
   {
@@ -217,9 +217,9 @@ class LinkedBinaryTree: public BinaryTree<BinTreeNode<T> >
 
   int height() const { return height(root); }
 
- private:
+ protected:
   BinTreeNode<T>* root;
-  int tree_size;
+  size_t tree_size;
   static void PreOrder(void (*)(BinTreeNode<T> *), BinTreeNode<T> *);
   static void InOrder(void (*)(BinTreeNode<T> *), BinTreeNode<T> *);
   static void PostOrder(void (*)(BinTreeNode<T> *), BinTreeNode<T> *);
