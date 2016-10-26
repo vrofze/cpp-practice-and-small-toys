@@ -47,7 +47,7 @@ class LinkedList : public LinearList<T>
  protected:
   void checkIndex(int theIndex) const;
   LinkNode<T>* header;
-  int list_size;
+  size_t list_size;
 };
 
 template<typename T>
@@ -86,7 +86,7 @@ T& LinkedList<T>::get(int theIndex) const
 {
   checkIndex(theIndex);
   LinkNode<T>* pnode = header;
-  for(int i = 0; i != theIndex; ++i)
+  for(size_t i = 0; i != theIndex; ++i)
     pnode = pnode->next;
   return pnode->element;
 }
@@ -125,7 +125,7 @@ void LinkedList<T>::erase(int theIndex)
     }
     else{
       LinkNode<T>* pnode = header;
-      for(int i = 0; i != theIndex - 1; i++)
+      for(size_t i = 0; i != theIndex - 1; i++)
         pnode = pnode->next;
       delete_node = pnode->next;
       pnode->next = pnode->next->next;
@@ -157,7 +157,7 @@ template<typename T>
 void LinkedList<T>::output(std::ostream& out) const
 {
   LinkNode<T>* pnode = header;
-  for(int i = 0; i < list_size; ++i){
+  for(size_t i = 0; i < list_size; ++i){
     out << pnode->element << " ";
     pnode = pnode->next;
   }
@@ -179,7 +179,7 @@ void LinkedList<T>::push_back(const T& theElement)
     return;
   }
   LinkNode<T>* pnode = header;
-  for(int i = 0; i < list_size - 1; ++i)
+  for(size_t i = 0; i < list_size - 1; ++i)
     pnode = pnode->next;
   pnode->next = new LinkNode<T>(theElement, nullptr);
   ++list_size;
