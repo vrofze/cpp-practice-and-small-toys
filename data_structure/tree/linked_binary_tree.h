@@ -173,6 +173,10 @@ class LinkedBinaryTree: public BinaryTree<BinTreeNode<T> >
     {
       this->root = CopyCreatePreOrder(tree.root);
     }
+  LinkedBinaryTree(T element, BinTreeNode<T> *left, BinTreeNode<T> *right)
+    {
+      root = new BinTreeNode<T>(element, left, right);
+    }
   ~LinkedBinaryTree() { erase(); }
 
   bool empty() const { return tree_size == 0; }
