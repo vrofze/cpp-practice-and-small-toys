@@ -173,9 +173,11 @@ class LinkedBinaryTree: public BinaryTree<BinTreeNode<T> >
     {
       this->root = CopyCreatePreOrder(tree.root);
     }
-  LinkedBinaryTree(T element, BinTreeNode<T> *left, BinTreeNode<T> *right)
+  LinkedBinaryTree(T element, LinkedBinaryTree<T> *left, LinkedBinaryTree<T> *right)
     {
-      root = new BinTreeNode<T>(element, left, right);
+      root = new BinTreeNode<T>(element,
+                                left != nullptr ? left->root : nullptr,
+                                right != nullptr ? right->root : nullptr);
     }
   ~LinkedBinaryTree() { erase(); }
 
