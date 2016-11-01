@@ -24,12 +24,19 @@ class BSTree
 
 template<class K, class E>
 class BinarySearchTree: public BSTree<K, E>,
-                        public LinkedBinaryTree<pair<K, E>>
+public LinkedBinaryTree<pair<K, E>>
 {
  public:
-  BinarySearchTree(pair<K, E> *, size_t);
   pair<const K, E>* find(const K&);
-  void insert(const pair<K, E>&)
+  void insert(const pair<K, E>&);
+  void erase(const K&);
+  void ascend();
 };
+
+template<class K, class E>
+pair<const K, E>* BinarySearchTree<K, E>::find(const K&)
+{
+}
+
 
 #endif
