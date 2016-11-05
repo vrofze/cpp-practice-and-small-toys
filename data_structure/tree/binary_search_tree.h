@@ -25,7 +25,7 @@ public:
 
 template<class K, class E>
 class BinarySearchTree: public BSTree<K, E>,
-public LinkedBinaryTree<pair<K, E>>
+                        public LinkedBinaryTree<pair<K, E>>
 {
 public:
     pair<const K, E>* find(const K&);
@@ -79,7 +79,7 @@ void BinarySearchTree<K, E>::insert(const pair<const K, E>& the_pair)
 }
 
 template<class K, class E>
-    void BinarySearchTree<K, E>::erase(const K& the_key)
+void BinarySearchTree<K, E>::erase(const K& the_key)
 {
     BinTreeNode<pair<const K, E>> *p = this->root,
         *pp = nullptr;
@@ -90,25 +90,53 @@ template<class K, class E>
         else
             p = p->right;
     }
-    if(p == nullptr)
+
+    if(p == nullptr) // can not find the key
         return ;
 
     if(p->left != nullptr && p->right != nullptr){
-        BinTreeNode<pair<const K, E>> *s = p->left,
-            *ps = p;
-
-        while(s->right != nullptr){
+        BinTreeNode<pair<const K, E>> *s = p->left, *ps = p;
+        while(s->right != nullptr){ // find min in right subtree
             ps = s;
             s = s->right;
         }
 
-        BinTregeNode<pair<const K, E>> *q =
-            new BinTreeNode<pair<const K, E>>(s->element, s->left, s->right);
-        if(pp == nullptr) // root 为空
-            root = q;
+        // create a new node because of const K
+        BinTreeNode<pair<const K, E>> *q =
+            new BinTreeNode<pair<const K, E>>(s->element, q->left, q->right);
+        if(pp == nullptr) // root matched the_key
+            this->root = q;
         else if(p == pp->left)
+            pp->left = q;
+        else
+            pp->right = q;
+
+        // s is p's child
+        if(ps == p)
+            q->left = s->left;
+        else
+            ps->left = s->left;
+        delete p;
+        delete s;
+        --this->tree_size;
+    } else { // p has less then one child
+        BinTreeNode<pair<const K, E>> *q;
+        if(p->left != nullptr)
+            q = p->left;
+        else
+            q = p->right;
+
+        if(p == this->root)
+            this->root = q;
+        else {
+            if(p == pp->left)
+                pp->left = q;
+            else
+                pp->right = q;
+        }
+        --this->tree_size;
+        delete p;
     }
 }
-
 
 #endif
