@@ -14,9 +14,9 @@ class BSTree
 public:
     virtual ~BSTree() { }
     // 按键查找数对
-    virtual pair<const K, E>* find(const K&) const = 0;
+    virtual const pair<const K, E> find(const K&) const = 0;
     // 插入
-    virtual void insert(const pair<K, E>&) = 0;
+    virtual void insert(const pair<const K, E>&) = 0;
     // 按关键字删除
     virtual void erase(const K&) = 0;
     // 按关键字的升序输出所有数对
@@ -25,17 +25,20 @@ public:
 
 template<class K, class E>
 class BinarySearchTree: public BSTree<K, E>,
-                        public LinkedBinaryTree<pair<K, E>>
+                        public LinkedBinaryTree<pair<const K, E>>
 {
 public:
-    pair<const K, E>* find(const K&);
+    const pair<const K, E> find(const K&) const;
     void insert(const pair<const K, E>&);
     void erase(const K&);
     void ascend();
+
+private:
+    void ascend(BinTreeNode<pair<const K, E>> *);
 };
 
 template<class K, class E>
-pair<const K, E>* BinarySearchTree<K, E>::find(const K& key)
+const pair<const K, E> BinarySearchTree<K, E>::find(const K& key) const
 {
     BinTreeNode<pair<const K, E>> *p = this->root;
 
@@ -45,7 +48,7 @@ pair<const K, E>* BinarySearchTree<K, E>::find(const K& key)
         else if(key > p->element.first)
             p = p->right;
         else
-            return &p->element;
+            return p->element;
     }
 }
 
@@ -58,7 +61,7 @@ void BinarySearchTree<K, E>::insert(const pair<const K, E>& the_pair)
         pp = p;
         if(the_pair.first < p->element.first)
             p = p->left;
-        else if(the_pair.first > p->element.frist)
+        else if(the_pair.first > p->element.first)
             p = p->right;
         else {
             p->element.second = the_pair.second;
@@ -74,7 +77,7 @@ void BinarySearchTree<K, E>::insert(const pair<const K, E>& the_pair)
         else
             pp->right = new_node;
     else
-        pp = new_node;
+        this->root = new_node;
     ++this->tree_size;
 }
 
@@ -137,6 +140,31 @@ void BinarySearchTree<K, E>::erase(const K& the_key)
         --this->tree_size;
         delete p;
     }
+}
+
+template<class K, class E>
+void BinarySearchTree<K, E>::ascend()
+{
+    ascend(this->root);
+    cout << endl;
+}
+
+template<class K, class E>
+void BinarySearchTree<K, E>::ascend(BinTreeNode<std::pair<const K, E>> *p)
+{
+    if(p != nullptr){
+        ascend(p->right);
+        cout << p->element << " ";
+        ascend(p->left);
+    }
+}
+
+template<class K, class E>
+ostream& operator<<(ostream& out, const std::pair<const K, E>& x)
+{
+    out << "<" << x.first
+        << "," << x.second
+        << "> ";
 }
 
 #endif
