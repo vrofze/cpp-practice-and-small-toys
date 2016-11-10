@@ -2,6 +2,18 @@
 #define GRAPH_H
 
 template<class T>
+class edge
+{
+    
+};
+
+template<class T>
+class vertex_iterator
+{
+    
+};
+
+template<class T>
 class graph
 {
 public:
