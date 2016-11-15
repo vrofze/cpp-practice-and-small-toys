@@ -1,5 +1,0 @@
-#ifndef BINARY_SEARCH_TREE_P_H
-#define BINARY_SEARCH_TREE_P_H
-
-
-#endif
