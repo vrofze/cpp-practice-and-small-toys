@@ -81,13 +81,13 @@ protected:
 template<class T>
 void LinkedBinaryTree<T>::MakeTree()
 {
-    root = new RBTreeNode<T>('+', nullptr, nullptr);
-    root->left = new RBTreeNode<T>('*', nullptr, nullptr);
-    root->left->left = new RBTreeNode<T>('a', nullptr, nullptr);
-    root->left->right = new RBTreeNode<T>('b', nullptr, nullptr);
-    root->right = new RBTreeNode<T>('/', nullptr, nullptr);
-    root->right->left = new RBTreeNode<T>('c', nullptr, nullptr);
-    root->right->right = new RBTreeNode<T>('d', nullptr, nullptr);
+    root = new RBTreeNode<T>('+', nullptr, nullptr, nullptr);
+    root->left = new RBTreeNode<T>('*', nullptr, nullptr, root);
+    root->left->left = new RBTreeNode<T>('a', nullptr, nullptr, root->left);
+    root->left->right = new RBTreeNode<T>('b', nullptr, nullptr, root->left);
+    root->right = new RBTreeNode<T>('/', nullptr, nullptr, root);
+    root->right->left = new RBTreeNode<T>('c', nullptr, nullptr, root->right);
+    root->right->right = new RBTreeNode<T>('d', nullptr, nullptr, root->right);
     tree_size = 7;
 }
 

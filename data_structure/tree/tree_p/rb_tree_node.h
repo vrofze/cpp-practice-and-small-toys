@@ -19,6 +19,8 @@ struct RBTreeNode
         }
     RBTreeNode(const RBTreeNode& node): element(node.element), left(node.left), right(right), p(p), color(color)
         { }
+    RBTreeNode(const T element, RBTreeNode<T> *left, RBTreeNode<T> *right, RBTreeNode<T> *p):element(element), left(left), right(right), p(p)
+        { }
     RBTreeNode(const T element, RBTreeNode<T> *left, RBTreeNode<T> *right, RBTreeNode<T> *p, COLOR color): element(element), left(left), right(right), p(p), color(color)
         { }
 };
