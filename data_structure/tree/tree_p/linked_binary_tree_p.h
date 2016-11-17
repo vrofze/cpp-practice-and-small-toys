@@ -12,7 +12,7 @@ class LinkedBinaryTree
 public:
     LinkedBinaryTree()
         {
-            root = nullptr;
+            root = RBTreeNode<T>::nil;
             tree_size = 0;
         }
     LinkedBinaryTree(const LinkedBinaryTree<T>& tree)
@@ -81,20 +81,27 @@ protected:
 template<class T>
 void LinkedBinaryTree<T>::MakeTree()
 {
-    root = new RBTreeNode<T>('+', nullptr, nullptr, nullptr);
-    root->left = new RBTreeNode<T>('*', nullptr, nullptr, root);
-    root->left->left = new RBTreeNode<T>('a', nullptr, nullptr, root->left);
-    root->left->right = new RBTreeNode<T>('b', nullptr, nullptr, root->left);
-    root->right = new RBTreeNode<T>('/', nullptr, nullptr, root);
-    root->right->left = new RBTreeNode<T>('c', nullptr, nullptr, root->right);
-    root->right->right = new RBTreeNode<T>('d', nullptr, nullptr, root->right);
+    root = new RBTreeNode<T>('+', RBTreeNode<T>::nil,
+                             RBTreeNode<T>::nil, RBTreeNode<T>::nil);
+    root->left = new RBTreeNode<T>('*', RBTreeNode<T>::nil,
+                                   RBTreeNode<T>::nil, root);
+    root->left->left = new RBTreeNode<T>('a', RBTreeNode<T>::nil,
+                                         RBTreeNode<T>::nil, root->left);
+    root->left->right = new RBTreeNode<T>('b', RBTreeNode<T>::nil,
+                                          RBTreeNode<T>::nil, root->left);
+    root->right = new RBTreeNode<T>('/', RBTreeNode<T>::nil,
+                                    RBTreeNode<T>::nil, root);
+    root->right->left = new RBTreeNode<T>('c', RBTreeNode<T>::nil,
+                                          RBTreeNode<T>::nil, root->right);
+    root->right->right = new RBTreeNode<T>('d', RBTreeNode<T>::nil,
+                                           RBTreeNode<T>::nil, root->right);
     tree_size = 7;
 }
 
 template<class T>
 void LinkedBinaryTree<T>::PreOrder(void (*visit)(RBTreeNode<T> *), RBTreeNode<T> *t)
 {
-    if(t != nullptr){
+    if(t != RBTreeNode<T>::nil){
         visit(t);
         PreOrder(visit, t->left);
         PreOrder(visit, t->right);
@@ -104,7 +111,7 @@ void LinkedBinaryTree<T>::PreOrder(void (*visit)(RBTreeNode<T> *), RBTreeNode<T>
 template<class T>
 void LinkedBinaryTree<T>::InOrder(void (*visit)(RBTreeNode<T> *), RBTreeNode<T> *t)
 {
-    if(t != nullptr){
+    if(t != RBTreeNode<T>::nil){
         InOrder(visit, t->left);
         visit(t);
         InOrder(visit, t->right);
@@ -114,7 +121,7 @@ void LinkedBinaryTree<T>::InOrder(void (*visit)(RBTreeNode<T> *), RBTreeNode<T> 
 template<class T>
 void LinkedBinaryTree<T>::PostOrder(void (*visit)(RBTreeNode<T> *), RBTreeNode<T> *t)
 {
-    if(t != nullptr){
+    if(t != RBTreeNode<T>::nil){
         PostOrder(visit, t->left);
         PostOrder(visit, t->right);
         visit(t);
@@ -126,10 +133,10 @@ void LinkedBinaryTree<T>::LevelOrder(void (*visit)(RBTreeNode<T> *), RBTreeNode<
 {
     ArrayQueue<RBTreeNode<T>*> queue;
     RBTreeNode<T>* temp = t;
-    while(temp != nullptr){
-        if(temp->left != nullptr)
+    while(temp != RBTreeNode<T>::nil){
+        if(temp->left != RBTreeNode<T>::nil)
             queue.push(temp->left);
-        if(temp->right != nullptr)
+        if(temp->right != RBTreeNode<T>::nil)
             queue.push(temp->right);
         visit(temp);
         if(queue.empty())
@@ -141,7 +148,7 @@ void LinkedBinaryTree<T>::LevelOrder(void (*visit)(RBTreeNode<T> *), RBTreeNode<
 template<class T>
 int LinkedBinaryTree<T>::height(RBTreeNode<T> *t) const
 {
-    if(t == nullptr)
+    if(t == RBTreeNode<T>::nil)
         return 0;
     else{
         int hl = height(t->left); // 左子树的高度
@@ -153,8 +160,8 @@ int LinkedBinaryTree<T>::height(RBTreeNode<T> *t) const
 template<class T>
 RBTreeNode<T>* LinkedBinaryTree<T>::CopyCreatePreOrder(const RBTreeNode<T> *t)
 {
-    RBTreeNode<T> * new_p = nullptr;
-    if(t != nullptr){
+    RBTreeNode<T> * new_p = RBTreeNode<T>::nil;
+    if(t != RBTreeNode<T>::nil){
         new_p = new RBTreeNode<T>(t->element,
                                   CopyCreatePreOrder(t->left),
                                   CopyCreatePreOrder(t->right),
