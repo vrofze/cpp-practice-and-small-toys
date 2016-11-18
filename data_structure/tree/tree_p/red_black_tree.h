@@ -114,15 +114,26 @@ const pair<const K, E>& RedBlackTree<K, E>::predecessor(const K& key) const
 template<class K, class E>
 void RedBlackTree<K, E>::insert(const pair<const K, E>& pair)
 {
-    Node *p = find(pair.first);
-    Node *new_node = new Node(pair);
-    new_node->color = COLOR::RED; // make new node red;
-    if(p->p == Node::nil)
+    Node *p = this->root, *y;
+    while(p != Node::nil && pair.first != p->element.first){
+        y = p;
+        if(pair.first < p->element.first)
+            p = p->left;
+        else if(pair.first > p->element.first)
+            p = p->right;
+    }
+
+    // make a new node
+    Node *new_node = new Node(pair, Node::nil, Node::nil, y, COLOR::RED);
+    if(y == Node::nil){
         this->root = new_node;
-    else if(p == p->p->left)
-        p->p->left = new_node; // new node should be placed in left child
-    else p->p->right = new_node; // new node should be placed in right child
+    }
+    else if(pair.first < y->element.first)
+        y->left = new_node; // new node should be placed in left child
+    else
+        y->right = new_node; // new node should be placed in right child
     insert_fixup(new_node); // fixup insert
+    ++this->tree_size;
 }
 
 template<class K, class E>
@@ -147,7 +158,26 @@ void RedBlackTree<K, E>::insert_fixup(Node *z)
                 right_rotate(z->p->p);
             }
         }
+        else {
+            Node *y = z->p->p->left;
+            if(y->color == COLOR::RED){
+                z->p->color = COLOR::BLACK;
+                y->color = COLOR::BLACK;
+                z->p->p->color = COLOR::RED;
+                z = z->p->p;
+            }
+            else {
+                if(z == z->p->right){
+                    z = z->p;
+                    right_rotate(z);
+                }
+                z->p->color = COLOR::BLACK;
+                z->p->p->color = COLOR::RED;
+                left_rotate(z->p->p);
+            }
+        }
     }
+    this->root->color = COLOR::BLACK;
 }
 
 template<class K, class E>
@@ -164,24 +194,98 @@ void RedBlackTree<K, E>::transplant(Node *old_p, Node *new_p)
 template<class K, class E>
 void RedBlackTree<K, E>::tree_delete(const K& key)
 {
-    Node *p = find(key);
-    if(p == Node::nil)
+    Node *y = z, x;
+    COLOR y_original_color = y->color; // y_original_color save the lost color
+    if(z == Node::nil)
         return ;
-    if(p->left == Node::nil)
-        transplant(p, p->right);
-    else if(p->right == Node::nil)
-        transplant(p, p->left);
-    else {
-        Node *min = minimum(p->right);
-        if(min != p){
-            transplant(min, min->right);
-            min->right = p->right;
-            min->right->p = min;
-        }
-        transplant(p, min);
-        min->left = p->left;
-        min->right->p = p;
+    if(z->left == Node::nil){
+        x = z->right;
+        transplant(z, z->right);
     }
+    else if(z->right == Node::nil){
+        x = z->left;
+        transplant(z, z->left);
+    }
+    else {
+        y = minimum(z->right);
+        y_original_color = y->color;
+        x = y->right;
+        if(y != z){
+            transplant(y, y->right);
+            y->right = z->right;
+            y->right->p = y;
+        }
+        transplant(z, y);
+        y->left = z->left;
+        y->left->p = y;
+        y->color = z->color;
+        delete z;                     // free
+    }
+    if(y_original_color == COLOR::BLACK)
+        delete_fixup(x);
+    --this->tree_size;
+}
+
+template<class K, class E>
+void RedBlackTree<K, E>::delete_fixup(Node *x)
+{
+    while(x != this->root && x->color == COLOR::BLACK){
+        if(x == x->p->left){
+            Node *w = x->p->right;
+            if(w->color == COLOR::RED){
+                w->color = COLOR::BLACK;
+                x->p->color = COLOR::RED;
+                left_rotate(x->p);
+                w = x->p->right;
+            }
+            if(w->left->color == COLOR::BLACK &&
+               w->right->color == COLOR::BLACK){
+                w->color = COLOR::RED;
+                x = x->p;
+            }
+            else {
+                if(w->right->color == COLOR::BLACK){
+                    w->left->color = COLOR::BLACK;
+                    w->right->color = COLOR::RED;
+                    right_rotate(w);
+                    w = x->p->right;
+                }
+                w->color = x->p->color;
+                x->p->color = COLOR::BLACK;
+                w->right->color = COLOR::BLACK;
+                left_rotate(x->p);
+                x = this->root;
+            }
+        }
+        else {                                        // x == x->p->right
+            Node *w = x->p->left;
+            if(w->color == COLOR::RED){
+                w->color = COLOR::BLACK;
+                w->p->color = COLOR::RED;
+                right_rotate(w->p);
+                w = w->p->left;
+            }
+            if(w->left->color == COLOR::BLACK &&
+               w->right->color == COLOR::BLACK){
+                w->color = COLOR::BLACK;
+                x = x->p;
+            }
+            else {
+                if(w->left->color == COLOR::BLACK){
+                    w->right->color = COLOR::BLACK;
+                    w->color = COLOR::RED;
+                    left_rotate(w);
+                    w = x->p->left;
+                }
+                w->color = x->p->color;
+                x->p->color = COLOR::BLACK;
+                w->left->color = COLOR::BLACK;
+                right_rotate(x->p);
+                x = this->root;
+            }
+        }
+    }
+    x->color = COLOR::BLACK;
 }
 
 template<class K, class E>
@@ -216,6 +320,12 @@ void RedBlackTree<K, E>::right_rotate(Node *y)
     else y->p->right = x;
     x->right = y;
     y->p = x;
+}
+
+template<class K, class E>
+ostream& operator<<(ostream& out, const pair<const K, E> pair)
+{
+    out << "<" << pair.first << ", " << pair.second << "> ";
 }
 
 #endif
