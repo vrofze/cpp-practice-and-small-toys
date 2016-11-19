@@ -14,11 +14,11 @@ class RedBlackTree: public LinkedBinaryTree<pair<const K, E>>
 public:
     typedef RBTreeNode<pair<const K, E>> Node;
     const pair<const K, E>& search(const K&) const;
-    const pair<const K, E>& minimum() const
+    Node* const minimum() const
         {
             return minimum(this->root);
         }
-    const pair<const K, E>& maximum() const
+    Node* const maximum() const
         {
             return maximum(this->root);
         }
@@ -28,8 +28,8 @@ public:
     void tree_delete(const K&);
 
 private:
-    const pair<const K, E>& minimum(Node *) const;
-    const pair<const K, E>& maximum(Node *) const;
+    Node* const minimum(Node *) const;
+    Node* const maximum(Node *) const;
     void transplant(Node *, Node *);
     Node* find(const K& key) const;
     void left_rotate(Node *);
@@ -52,15 +52,15 @@ const pair<const K, E>& RedBlackTree<K, E>::search(const K& key) const
 }
 
 template<class K, class E>
-const pair<const K, E>& RedBlackTree<K, E>::minimum(Node *p) const
+typename RedBlackTree<K, E>::Node* const RedBlackTree<K, E>::minimum(Node *p) const
 {
     while(p->left != Node::nil)
         p = p->left;
-    return p->element;
+    return p;
 }
 
 template<class K, class E>
-const pair<const K, E>& RedBlackTree<K, E>::maximum(Node *p) const
+typename RedBlackTree<K, E>::Node* const RedBlackTree<K, E>::maximum(Node *p) const
 {
     while(p->right != Node::nil)
         p = p->right;
@@ -194,10 +194,17 @@ void RedBlackTree<K, E>::transplant(Node *old_p, Node *new_p)
 template<class K, class E>
 void RedBlackTree<K, E>::tree_delete(const K& key)
 {
-    Node *y = z, x;
-    COLOR y_original_color = y->color; // y_original_color save the lost color
+    Node *z = this->root;
+    while(z != Node::nil && key != z->element.first){
+        if(key < z->element.first)
+            z = z->left;
+        else if(key > z->element.first)
+            z = z->right;
+    }
     if(z == Node::nil)
         return ;
+    Node *y = z, *x;
+    COLOR y_original_color = y->color; // y_original_color save the lost color
     if(z->left == Node::nil){
         x = z->right;
         transplant(z, z->right);
