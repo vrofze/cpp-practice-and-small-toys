@@ -13,7 +13,7 @@ int main()
     tree.insert(pair<int, int>(12, 12));
     tree.insert(pair<int, int>(19, 19));
     tree.insert(pair<int, int>(8, 8));
-    tree.tree_delete(19);
+    tree.tree_delete(8);
     cout << tree.size() << endl;
     tree.PreOrderOutput();
 }
