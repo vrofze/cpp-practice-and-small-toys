@@ -2,6 +2,7 @@
 #define GRAPH_H
 
 #include "../queue/array_queue.h"
+#include "../stack/ArrayStack.h"
 #include <iostream>
 
 template<class T>
@@ -33,26 +34,64 @@ public:
     virtual bool weighted() const = 0;
     virtual vertex_iterator<T>* iterator(int) = 0;
     virtual void bfs(int, int[], int);
+    virtual void dfs(int, int[], int);
 };
 
 template<class T>
 void graph<T>::bfs(int v, int reach[], int label)
 {
     ArrayQueue<int> queue;
-    reach[v] = label;
     queue.push(v);
+    reach[v] = label;
     std::cout << v << " ";
     while(!queue.empty()){
         int w = queue.pop();
 
         vertex_iterator<T> *iw = iterator(w);
         int u;
-        while((u = iw->next()) != 0)
+        while((u = iw->next()) != 0){
             if(reach[u] == 0){
-                queue.push(u);
                 reach[u] = label;
                 std::cout << u << " ";
+                queue.push(u);
             }
+        }
+        delete iw;
+    }
+}
+
+/*template<class T>
+void graph<T>::dfs(int v, int reach[], int label)
+{
+    reach[v] = label;
+    std::cout << v << " ";
+    vertex_iterator<T> *iv = iterator(v);
+    int u;
+    while((u = iv->next()) != 0)
+        if(reach[u] == 0)
+            dfs(u, reach, label);
+    delete iv;
+}
+*/
+
+template<class T>
+void graph<T>::dfs(int v, int reach[], int label)
+{
+    ArrayStack<int> stack;
+    stack.push(v);
+    while(!stack.empty()){
+        int w = stack.pop();
+        if(reach[w] == 0){
+            reach[w] = label;
+            std::cout << w << " ";
+        }
+
+        vertex_iterator<T> *iw = iterator(w);
+        int u;
+        while((u = iw->next()) != 0){
+            if(reach[u] == 0)
+                stack.push(u);
+        }
         delete iw;
     }
 }

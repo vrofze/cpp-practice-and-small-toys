@@ -91,21 +91,18 @@ protected:
 };
 
 template<class T>
-AdjacencyWDigraph<T>::AdjacencyWDigraph(int num_of_vertices, T the_no_edges)
+AdjacencyWDigraph<T>::AdjacencyWDigraph(int num_of_vertices, T the_no_edges): n(num_of_vertices), e(0), no_edge(the_no_edges)
 {
     if(num_of_vertices < 0){
         std::cout << "adjacencywdigraph" << std::endl;
         throw "num of vertices error!";
     }
 
-    n = num_of_vertices;
-    e = 0;
-    no_edge = the_no_edges;
-    a = new T*[n];
-    for(int i = 0; i < n + 1; ++i)
+    a = new T*[n+1];
+    for(int i = 0; i <= n; ++i)
         a[i] = new T[n + 1];
-    for(int i = 1; i <= n; ++i)
-        for(int j = 1; j <= n; ++j)
+    for(int i = 0; i <= n; ++i)
+        for(int j = 0; j <= n; ++j)
             a[i][j] = no_edge;
 }
 
