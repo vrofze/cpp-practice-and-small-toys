@@ -16,7 +16,7 @@ int main(int argc, char * argv[])
   ip::tcp::resolver::query query(url, "80");
   ip::tcp::resolver::iterator iter = resolver.resolve(query);
   ip::tcp::resolver::iterator end; // as a end point
-  for(; iter!=end; iter++){
+  for(; iter != end; ++iter){
     ip::tcp::endpoint ep = *iter;
     std::cout << ep.address().to_string() << std::endl;
   }

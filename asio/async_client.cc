@@ -4,7 +4,7 @@ using namespace boost::asio;
 
 void connect_handler(const boost::system::error_code& ec)
 {
-
+    std::cout << "ec:" << ec.value() << std::endl;
 }
 
 int main()
@@ -14,4 +14,6 @@ int main()
   ip::tcp::socket sock(service);
   sock.async_connect(ep, connect_handler);
   service.run();
+
+  return 0;
 }
