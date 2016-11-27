@@ -1,4 +1,5 @@
-#include<boost/asio.hpp>
+#include <iostream>
+#include <boost/asio.hpp>
 
 using namespace boost::asio;
 
@@ -28,10 +29,16 @@ protected:
         {
             if(ec)
                 return;
-            char data[512];
+            //char data[512];
+            char buff[512] = "";
             boost::system::error_code error;
-            psocket->read_some(buffer(data), error);
-            std::cout << "handle accept:" << data << std::endl;
+            std::cout << "send:";
+            // std::cin >> buff;
+            std::cin.getline(buff, 512);
+            psocket->write_some(buffer(buff), error);
+
+            psocket->read_some(buffer(buff), error);
+            std::cout << "receive:" << buff << std::endl;
             socket_ptr psock = std::make_shared<ip::tcp::socket>(ip::tcp::socket(service));
             this->start_accept(psock);
         }
@@ -43,4 +50,6 @@ int main()
     io_service service;
     Server server(service);
     server.start();
+
+    return 0;
 }

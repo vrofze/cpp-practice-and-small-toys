@@ -18,7 +18,9 @@ int main(int argc, char * argv[])
   ip::tcp::resolver::iterator end; // as a end point
   for(; iter != end; ++iter){
     ip::tcp::endpoint ep = *iter;
-    std::cout << ep.address().to_string() << std::endl;
+    std::cout << "ip: " << ep.address().to_string()
+              << " port: " << ep.port()
+              << " protocol: " << ep.protocol().type() << std::endl;
   }
   return 0;
 }
