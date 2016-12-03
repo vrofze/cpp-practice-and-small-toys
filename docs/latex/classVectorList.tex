@@ -1,0 +1,73 @@
+\hypertarget{classVectorList}{}\section{Vector\+List$<$ T $>$ Class Template Reference}
+\label{classVectorList}\index{Vector\+List$<$ T $>$@{Vector\+List$<$ T $>$}}
+Inheritance diagram for Vector\+List$<$ T $>$\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classVectorList}
+\end{center}
+\end{figure}
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classVectorList_a9aa89b0156dca1ebe731f2296e7a5e38}\label{classVectorList_a9aa89b0156dca1ebe731f2296e7a5e38}} 
+typedef std\+::vector$<$ T $>$\+::\hyperlink{classiterator}{iterator} {\bfseries iterator}
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classVectorList_a125d5866d0d98b696c996d9f4b7d87af}\label{classVectorList_a125d5866d0d98b696c996d9f4b7d87af}} 
+{\bfseries Vector\+List} (int length=10)
+\item 
+\mbox{\Hypertarget{classVectorList_a5fa6e7518053eba69818ec99acb92a71}\label{classVectorList_a5fa6e7518053eba69818ec99acb92a71}} 
+{\bfseries Vector\+List} (const \hyperlink{classVectorList}{Vector\+List}$<$ T $>$ \&)
+\item 
+\mbox{\Hypertarget{classVectorList_a7ba6e916d1d9f0f3c3b73883eaf9fc9a}\label{classVectorList_a7ba6e916d1d9f0f3c3b73883eaf9fc9a}} 
+bool {\bfseries empty} () const
+\item 
+\mbox{\Hypertarget{classVectorList_a914cc0d95c50c2525e72dc61cb5b86c7}\label{classVectorList_a914cc0d95c50c2525e72dc61cb5b86c7}} 
+int {\bfseries size} () const
+\item 
+\mbox{\Hypertarget{classVectorList_a3f2d17e63ce64a5cd32c4283544779d8}\label{classVectorList_a3f2d17e63ce64a5cd32c4283544779d8}} 
+T \& {\bfseries get} (int the\+Index) const
+\item 
+\mbox{\Hypertarget{classVectorList_a1cc6db97a3a9abee9f2d6d002695f1a9}\label{classVectorList_a1cc6db97a3a9abee9f2d6d002695f1a9}} 
+int {\bfseries index\+Of} (const T \&the\+Element) const
+\item 
+\mbox{\Hypertarget{classVectorList_ad6aa0bb07676f23de797dfa9ba4f3d7b}\label{classVectorList_ad6aa0bb07676f23de797dfa9ba4f3d7b}} 
+void {\bfseries erase} (int the\+Index)
+\item 
+\mbox{\Hypertarget{classVectorList_ad64994fce0685742e46e3b27d4dd6d40}\label{classVectorList_ad64994fce0685742e46e3b27d4dd6d40}} 
+void {\bfseries insert} (int the\+Index, const T \&the\+Element)
+\item 
+\mbox{\Hypertarget{classVectorList_aa65ee0290429edf9fb1566880df23704}\label{classVectorList_aa65ee0290429edf9fb1566880df23704}} 
+void {\bfseries output} (std\+::ostream \&out) const
+\item 
+\mbox{\Hypertarget{classVectorList_a4c51e98c987b77b6c76476f5d6cddcd6}\label{classVectorList_a4c51e98c987b77b6c76476f5d6cddcd6}} 
+void {\bfseries push\+\_\+back} (const T \&the\+Element)
+\item 
+\mbox{\Hypertarget{classVectorList_ae62bab6c720f860f4eda0d4b4ea1f629}\label{classVectorList_ae62bab6c720f860f4eda0d4b4ea1f629}} 
+int {\bfseries capacity} () const
+\item 
+\mbox{\Hypertarget{classVectorList_ada561e1f71ba030f89638ecc86576724}\label{classVectorList_ada561e1f71ba030f89638ecc86576724}} 
+\hyperlink{classiterator}{iterator} {\bfseries begin} ()
+\item 
+\mbox{\Hypertarget{classVectorList_af568c506954c234b8dcbdc2ee9846e47}\label{classVectorList_af568c506954c234b8dcbdc2ee9846e47}} 
+\hyperlink{classiterator}{iterator} {\bfseries end} ()
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classVectorList_adf7ba2201d2f8fb3b85e7ba2bdd04e14}\label{classVectorList_adf7ba2201d2f8fb3b85e7ba2bdd04e14}} 
+void {\bfseries check\+Index} (int the\+Index) const
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classVectorList_a5e800cced373d2fe09c57ec9ef128004}\label{classVectorList_a5e800cced373d2fe09c57ec9ef128004}} 
+std\+::vector$<$ T $>$ $\ast$ {\bfseries element}
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+data\+\_\+structure/linear\+\_\+list/vector\+\_\+list.\+h\end{DoxyCompactItemize}

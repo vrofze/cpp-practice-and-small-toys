@@ -1,0 +1,61 @@
+\hypertarget{classiterator}{}\section{iterator$<$ T $>$ Class Template Reference}
+\label{classiterator}\index{iterator$<$ T $>$@{iterator$<$ T $>$}}
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classiterator_a743a266afa7b73c484bf74461c100eb9}\label{classiterator_a743a266afa7b73c484bf74461c100eb9}} 
+typedef std\+::bidirectional\+\_\+iterator\+\_\+tag {\bfseries iterator\+\_\+category}
+\item 
+\mbox{\Hypertarget{classiterator_a3000f949e77f12b9d25292e47e6c9d94}\label{classiterator_a3000f949e77f12b9d25292e47e6c9d94}} 
+typedef T {\bfseries value\+\_\+type}
+\item 
+\mbox{\Hypertarget{classiterator_a9bfdd911ffa5ac8414b56118ecb6722e}\label{classiterator_a9bfdd911ffa5ac8414b56118ecb6722e}} 
+typedef std\+::ptrdiff\+\_\+t {\bfseries difference\+\_\+type}
+\item 
+\mbox{\Hypertarget{classiterator_aff916de6b5d0d925c095ff69e50dcc2e}\label{classiterator_aff916de6b5d0d925c095ff69e50dcc2e}} 
+typedef T $\ast$ {\bfseries pointer}
+\item 
+\mbox{\Hypertarget{classiterator_ab4cb4c59c8799e17f6a2e6a59b9c31f1}\label{classiterator_ab4cb4c59c8799e17f6a2e6a59b9c31f1}} 
+typedef T \& {\bfseries referrnce}
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classiterator_aeefbadab3a70434fd7209e53cfde1eda}\label{classiterator_aeefbadab3a70434fd7209e53cfde1eda}} 
+{\bfseries iterator} (T $\ast$the\+Position)
+\item 
+\mbox{\Hypertarget{classiterator_a812b6eb54f898651c5f3843d3bc6b304}\label{classiterator_a812b6eb54f898651c5f3843d3bc6b304}} 
+T \& {\bfseries operator$\ast$} () const
+\item 
+\mbox{\Hypertarget{classiterator_ac6dc72b0fe61dd7eaff65dae06f546e6}\label{classiterator_ac6dc72b0fe61dd7eaff65dae06f546e6}} 
+T \& {\bfseries operator-\/$>$} () const
+\item 
+\mbox{\Hypertarget{classiterator_ac7aa9929d22f3537fec4199f78d5ea0f}\label{classiterator_ac7aa9929d22f3537fec4199f78d5ea0f}} 
+\hyperlink{classiterator}{iterator} \& {\bfseries operator++} ()
+\item 
+\mbox{\Hypertarget{classiterator_aee23ee83b4ada171ef7b5d84023a9a86}\label{classiterator_aee23ee83b4ada171ef7b5d84023a9a86}} 
+\hyperlink{classiterator}{iterator} {\bfseries operator++} (int)
+\item 
+\mbox{\Hypertarget{classiterator_aece894a066138fd746018c25b66aa21b}\label{classiterator_aece894a066138fd746018c25b66aa21b}} 
+\hyperlink{classiterator}{iterator} \& {\bfseries operator-\/-\/} ()
+\item 
+\mbox{\Hypertarget{classiterator_a03399efe64e2576f58af280a93f6b0e2}\label{classiterator_a03399efe64e2576f58af280a93f6b0e2}} 
+\hyperlink{classiterator}{iterator} {\bfseries operator-\/-\/} (int)
+\item 
+\mbox{\Hypertarget{classiterator_a41525a41e1b5975155f4908c3446163f}\label{classiterator_a41525a41e1b5975155f4908c3446163f}} 
+bool {\bfseries operator!=} (const \hyperlink{classiterator}{iterator} \&rhs) const
+\item 
+\mbox{\Hypertarget{classiterator_af5ae5f2473c7b117149354b660ce7cfd}\label{classiterator_af5ae5f2473c7b117149354b660ce7cfd}} 
+bool {\bfseries operator==} (const \hyperlink{classiterator}{iterator} \&rhs) const
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classiterator_ad4b129783502be6635bb37f463ba0998}\label{classiterator_ad4b129783502be6635bb37f463ba0998}} 
+T $\ast$ {\bfseries position}
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+data\+\_\+structure/linear\+\_\+list/array\+\_\+list.\+h\end{DoxyCompactItemize}

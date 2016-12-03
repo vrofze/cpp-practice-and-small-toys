@@ -1,0 +1,85 @@
+\hypertarget{classBinaryTree}{}\section{Binary\+Tree$<$ T $>$ Class Template Reference}
+\label{classBinaryTree}\index{Binary\+Tree$<$ T $>$@{Binary\+Tree$<$ T $>$}}
+Inheritance diagram for Binary\+Tree$<$ T $>$\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=1.680000cm]{classBinaryTree}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classBinaryTree_a6d3447d1a09fa69e4e34e25f0f53b6f1}\label{classBinaryTree_a6d3447d1a09fa69e4e34e25f0f53b6f1}} 
+virtual bool {\bfseries empty} () const =0
+\item 
+\mbox{\Hypertarget{classBinaryTree_a6f43c6aee330a62beeb0fedb3be25404}\label{classBinaryTree_a6f43c6aee330a62beeb0fedb3be25404}} 
+virtual size\+\_\+t {\bfseries size} () const =0
+\item 
+virtual void \hyperlink{classBinaryTree_a34fabb6ce2424c3ef1e038e148e273c5}{Pre\+Order} (void($\ast$)(T $\ast$))=0
+\item 
+virtual void \hyperlink{classBinaryTree_a45706a2cafb858f169506470ae440c8a}{In\+Order} (void($\ast$)(T $\ast$))=0
+\item 
+virtual void \hyperlink{classBinaryTree_a8bc36fb3d3a12ef13d30cc9b4b84e428}{Post\+Order} (void($\ast$)(T $\ast$))=0
+\item 
+virtual void \hyperlink{classBinaryTree_a1d6ccf7f6b6e1b9a702b12fd5ca6dc32}{Level\+Order} (void($\ast$)(T $\ast$))=0
+\end{DoxyCompactItemize}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classBinaryTree_a45706a2cafb858f169506470ae440c8a}\label{classBinaryTree_a45706a2cafb858f169506470ae440c8a}} 
+\index{Binary\+Tree@{Binary\+Tree}!In\+Order@{In\+Order}}
+\index{In\+Order@{In\+Order}!Binary\+Tree@{Binary\+Tree}}
+\subsubsection{\texorpdfstring{In\+Order()}{InOrder()}}
+{\footnotesize\ttfamily template$<$class T$>$ \\
+virtual void \hyperlink{classBinaryTree}{Binary\+Tree}$<$ T $>$\+::In\+Order (\begin{DoxyParamCaption}\item[{void($\ast$)(T $\ast$)}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+visit the tree with inorder \begin{DoxyVerb}left --> root --> right
+\end{DoxyVerb}
+ 
+
+Implemented in \hyperlink{classLinkedBinaryTree_a82b1a5995e90671905da7502d7f58eba}{Linked\+Binary\+Tree$<$ T $>$}.
+
+\mbox{\Hypertarget{classBinaryTree_a1d6ccf7f6b6e1b9a702b12fd5ca6dc32}\label{classBinaryTree_a1d6ccf7f6b6e1b9a702b12fd5ca6dc32}} 
+\index{Binary\+Tree@{Binary\+Tree}!Level\+Order@{Level\+Order}}
+\index{Level\+Order@{Level\+Order}!Binary\+Tree@{Binary\+Tree}}
+\subsubsection{\texorpdfstring{Level\+Order()}{LevelOrder()}}
+{\footnotesize\ttfamily template$<$class T$>$ \\
+virtual void \hyperlink{classBinaryTree}{Binary\+Tree}$<$ T $>$\+::Level\+Order (\begin{DoxyParamCaption}\item[{void($\ast$)(T $\ast$)}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+visit the tree with level order \begin{DoxyVerb}level: top --> bottom
+\end{DoxyVerb}
+ 
+
+Implemented in \hyperlink{classLinkedBinaryTree_a5ca48cd9b784ca7cdf0f41d03dbc4873}{Linked\+Binary\+Tree$<$ T $>$}.
+
+\mbox{\Hypertarget{classBinaryTree_a8bc36fb3d3a12ef13d30cc9b4b84e428}\label{classBinaryTree_a8bc36fb3d3a12ef13d30cc9b4b84e428}} 
+\index{Binary\+Tree@{Binary\+Tree}!Post\+Order@{Post\+Order}}
+\index{Post\+Order@{Post\+Order}!Binary\+Tree@{Binary\+Tree}}
+\subsubsection{\texorpdfstring{Post\+Order()}{PostOrder()}}
+{\footnotesize\ttfamily template$<$class T$>$ \\
+virtual void \hyperlink{classBinaryTree}{Binary\+Tree}$<$ T $>$\+::Post\+Order (\begin{DoxyParamCaption}\item[{void($\ast$)(T $\ast$)}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+visit the tree with post order \begin{DoxyVerb}left --> right --> root
+\end{DoxyVerb}
+ 
+
+Implemented in \hyperlink{classLinkedBinaryTree_ad8a0144cc092a677eb2b3189059dd19f}{Linked\+Binary\+Tree$<$ T $>$}.
+
+\mbox{\Hypertarget{classBinaryTree_a34fabb6ce2424c3ef1e038e148e273c5}\label{classBinaryTree_a34fabb6ce2424c3ef1e038e148e273c5}} 
+\index{Binary\+Tree@{Binary\+Tree}!Pre\+Order@{Pre\+Order}}
+\index{Pre\+Order@{Pre\+Order}!Binary\+Tree@{Binary\+Tree}}
+\subsubsection{\texorpdfstring{Pre\+Order()}{PreOrder()}}
+{\footnotesize\ttfamily template$<$class T$>$ \\
+virtual void \hyperlink{classBinaryTree}{Binary\+Tree}$<$ T $>$\+::Pre\+Order (\begin{DoxyParamCaption}\item[{void($\ast$)(T $\ast$)}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+preorder visit the tree \begin{DoxyVerb}root --> left --> right
+\end{DoxyVerb}
+ 
+
+Implemented in \hyperlink{classLinkedBinaryTree_ab6a897c3961294d56cd83790aaa3ff9c}{Linked\+Binary\+Tree$<$ T $>$}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+data\+\_\+structure/tree/binary\+\_\+tree.\+h\end{DoxyCompactItemize}

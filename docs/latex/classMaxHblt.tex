@@ -1,0 +1,53 @@
+\hypertarget{classMaxHblt}{}\section{Max\+Hblt$<$ T $>$ Class Template Reference}
+\label{classMaxHblt}\index{Max\+Hblt$<$ T $>$@{Max\+Hblt$<$ T $>$}}
+Inheritance diagram for Max\+Hblt$<$ T $>$\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.781457cm]{classMaxHblt}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classMaxHblt_ac748ad969d08dd24d4ade6595acd7002}\label{classMaxHblt_ac748ad969d08dd24d4ade6595acd7002}} 
+bool \hyperlink{classMaxHblt_ac748ad969d08dd24d4ade6595acd7002}{empty} () const
+\begin{DoxyCompactList}\small\item\em if the tree was empty \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classMaxHblt_ae8a4af940e3e9f8f346c63f0407a72cd}\label{classMaxHblt_ae8a4af940e3e9f8f346c63f0407a72cd}} 
+size\+\_\+t \hyperlink{classMaxHblt_ae8a4af940e3e9f8f346c63f0407a72cd}{size} () const
+\begin{DoxyCompactList}\small\item\em the number of node in thre tree \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classMaxHblt_a70f1601764e0f511357f06e4eed074dc}\label{classMaxHblt_a70f1601764e0f511357f06e4eed074dc}} 
+void \hyperlink{classMaxHblt_a70f1601764e0f511357f06e4eed074dc}{meld} (\hyperlink{classMaxHblt}{Max\+Hblt}$<$ T $>$ \&hblt)
+\begin{DoxyCompactList}\small\item\em meld two hblt into one \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classMaxHblt_a6c5f2a416535abc326c5e90f7f0f7c3b}\label{classMaxHblt_a6c5f2a416535abc326c5e90f7f0f7c3b}} 
+const T \& \hyperlink{classMaxHblt_a6c5f2a416535abc326c5e90f7f0f7c3b}{top} ()
+\begin{DoxyCompactList}\small\item\em return the max(min) of the tree \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classMaxHblt_a5941b294086c496fc4eff6e7ebc6b27f}\label{classMaxHblt_a5941b294086c496fc4eff6e7ebc6b27f}} 
+T \hyperlink{classMaxHblt_a5941b294086c496fc4eff6e7ebc6b27f}{pop} ()
+\begin{DoxyCompactList}\small\item\em pop out the max(min) of thre tree \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classMaxHblt_adfe07cefe42e2a7feddf061a1e601396}\label{classMaxHblt_adfe07cefe42e2a7feddf061a1e601396}} 
+void \hyperlink{classMaxHblt_adfe07cefe42e2a7feddf061a1e601396}{push} (const T \&element)
+\begin{DoxyCompactList}\small\item\em push a node to the tree \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classMaxHblt_a3f8bd08381873a4fc70e8549130e54e6}\label{classMaxHblt_a3f8bd08381873a4fc70e8549130e54e6}} 
+void \hyperlink{classMaxHblt_a3f8bd08381873a4fc70e8549130e54e6}{initialize} (T $\ast$arr, int \hyperlink{classMaxHblt_ae8a4af940e3e9f8f346c63f0407a72cd}{size})
+\begin{DoxyCompactList}\small\item\em initialize the maxhblt tree \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classMaxHblt_ac60f9c62ad392a8df8bcbd3b91129d37}{meld} (\hyperlink{structBinTreeNode}{Bin\+Tree\+Node}$<$ std\+::pair$<$ int, T $>$$>$ $\ast$\&left, \hyperlink{structBinTreeNode}{Bin\+Tree\+Node}$<$ std\+::pair$<$ int, T $>$$>$ $\ast$\&right)
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classMaxHblt_ac60f9c62ad392a8df8bcbd3b91129d37}\label{classMaxHblt_ac60f9c62ad392a8df8bcbd3b91129d37}} 
+\index{Max\+Hblt@{Max\+Hblt}!meld@{meld}}
+\index{meld@{meld}!Max\+Hblt@{Max\+Hblt}}
+\subsubsection{\texorpdfstring{meld()}{meld()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+void \hyperlink{classMaxHblt}{Max\+Hblt}$<$ T $>$\+::meld (\begin{DoxyParamCaption}\item[{\hyperlink{structBinTreeNode}{Bin\+Tree\+Node}$<$ std\+::pair$<$ int, T $>$$>$ $\ast$\&}]{left,  }\item[{\hyperlink{structBinTreeNode}{Bin\+Tree\+Node}$<$ std\+::pair$<$ int, T $>$$>$ $\ast$\&}]{right }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+private meld method to recursive call 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+data\+\_\+structure/tree/max\+\_\+hblt.\+h\end{DoxyCompactItemize}
