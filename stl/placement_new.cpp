@@ -1,5 +1,7 @@
+#include <cstdlib>
 #include <iostream>
 #include <string>
+#include <new>
 
 using namespace std;
 
@@ -19,6 +21,11 @@ public:
         {
             cout << "operator new called " << size << endl;
             return ::operator new(size);
+        }
+
+    void * operator new(size_t size, void *p)
+        {
+            p = new X();
         }
 
     void * operator new(size_t size, string str)
@@ -53,6 +60,10 @@ int main()
     // X *spx = new X;
     delete px;
     // delete spx;
+
+    X *p = (X *)malloc(sizeof(X));
+
+    new(p) X();
 
     return 0;
 }
