@@ -7,7 +7,7 @@ int main()
     void *p = malloc(sizeof(int));
     std::cout << "sizeof p:" << sizeof(p) << std::endl;
     new(p) int(10);
-    std::cout << *(int *)p << std::endl;
+    std::cout << p << std::endl;
 
     free(p);
 
