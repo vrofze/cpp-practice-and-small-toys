@@ -1,5 +1,6 @@
 #include "merge_sort.h"
 #include "insertion_sort.h"
+#include "bubble_sort.h"
 
 #include <iostream>
 
@@ -16,7 +17,8 @@ int main()
         cin >> arr[i];
 
     // insertion_sort(arr, n);
-    merge_sort(arr, n);
+    // merge_sort(arr, n);
+    bubble_sort(arr, n);
 
     for(int i = 0; i < n; ++i)
         cout << arr[i] << " ";
