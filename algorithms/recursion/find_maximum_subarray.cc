@@ -6,20 +6,12 @@ using namespace std;
 
 typedef tuple<size_t, size_t, int> Tuple;
 
-int main()
-{
-    cout << "input the number of the array:";
-    size_t num;
-    cin >> num;
-    for(size_t i = 0; i < num; ++i);
-}
-
-Tuple find_max_crossing_subarray(int *arr, size_t low, size_t mid, size_t high)
+Tuple find_max_crossing_subarray(int arr[], size_t low, size_t mid, size_t high)
 {
     int left_sum = INT_MIN, right_sum = INT_MIN;
     int sum = 0;
     size_t max_left, max_right;
-    for(size_t i = mid; i >= low; --i){
+    for(int i = mid; i >= (int)low; --i){
         sum += arr[i];
         if(sum > left_sum){
             left_sum = sum;
@@ -39,7 +31,7 @@ Tuple find_max_crossing_subarray(int *arr, size_t low, size_t mid, size_t high)
     return make_tuple(max_left, max_right, left_sum + right_sum);
 }
 
-Tuple find_maximum_subarray(int *arr, size_t low, size_t high)
+Tuple find_maximum_subarray(int arr[], size_t low, size_t high)
 {
     if(low == high)
         return make_tuple(low, high, arr[low]);
@@ -61,3 +53,27 @@ Tuple find_maximum_subarray(int *arr, size_t low, size_t high)
             return right;
     }
 }
+
+int main()
+{
+    cout << "input the number of the array:";
+    size_t num;
+    cin >> num;
+    cout << "input "<< num <<  " numbers:";
+    int *arr = new int[num];
+    for(size_t i = 0; i < num; ++i){
+        cin >> arr[i];
+    }
+
+    Tuple result = find_maximum_subarray(arr, 0, num - 1);
+
+    cout << "low:" << get<0>(result)
+         << " high:" << get<1>(result)
+         << " sum:" << get<2>(result)
+         << endl;
+    // for(size_t i = 0; i < num; ++i)
+    //     cout << arr[i] << " ";
+    // cout << endl;
+}
+
+
