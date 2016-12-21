@@ -6,7 +6,8 @@
 
 #include <iostream>
 
-#ifndef BUBBLE_SORT_H
+#ifndef SWAP_FUNCTION
+#define SWAP_FUNCTION
 template<typename T>
 void swap(T &n, T &m)
 {
@@ -14,7 +15,7 @@ void swap(T &n, T &m)
     n = m;
     m = temp;
 }
-#endif
+#endif  // swap_function
 
 template<typename T>
 void max_heapify(T *arr, size_t i, size_t length)
@@ -62,7 +63,7 @@ void heap_sort(T *arr, size_t length)
     for(size_t i = 0; i < length; ++i)
         arr[i] = temp_arr[i + 1];
 
-    delete temp_arr;
+    delete[] temp_arr;
 }
 
 #endif

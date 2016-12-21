@@ -3,6 +3,8 @@
 
 #include <iostream>
 
+#ifndef SWAP_FUNCTION
+#define SWAP_FUNCTION
 template<typename T>
 void swap(T& m, T& n)
 {
@@ -10,6 +12,7 @@ void swap(T& m, T& n)
     m = n;
     n = temp;
 }
+#endif  // swap_function
 
 template<typename T>
 void bubble_sort(T arr[], size_t length)

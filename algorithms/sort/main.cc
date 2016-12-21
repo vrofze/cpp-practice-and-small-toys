@@ -2,6 +2,8 @@
 #include "insertion_sort.h"
 #include "bubble_sort.h"
 #include "heap_sort.h"
+#include "quick_sort.h"
+#include "counting_sort.h"
 
 #include <iostream>
 
@@ -20,10 +22,13 @@ int main()
     // insertion_sort(arr, n);
     // merge_sort(arr, n);
     // bubble_sort(arr, n);
-    heap_sort(arr, n);
+    // heap_sort(arr, n);
+    // quick_sort(arr, n);
+    counting_sort(arr, n);
 
     for(size_t i = 0; i < n; ++i)
         cout << arr[i] << " ";
     cout << endl;
+
     return 0;
 }
