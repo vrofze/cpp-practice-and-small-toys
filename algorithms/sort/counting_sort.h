@@ -19,7 +19,7 @@ void counting_sort(T *in_arr, int n)
 {
     T *out_arr = new T[n];
     T max = find_max(in_arr, n);
-    int *count = new int[max + 1];
+    int *count = new int[max + 1]; // max with type T was stupid
     for(int i = 0; i <= max; ++i)
         count[i] = 0;
     for(int i = 0; i < n; ++i)
