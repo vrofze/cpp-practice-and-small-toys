@@ -41,12 +41,13 @@ public:
 int main()
 {
     Solution sol;
-    std::string stri = " ";
+    std::string stri = "Hellow world and my name is frost";
     char *str = new char[40];
     strcpy(str, stri.c_str());
     sol.replaceSpace(str, 16);
     for(int j = 0; j < 40; ++j)
         std::cout << str[j];
+
 
     return 0;
 }
