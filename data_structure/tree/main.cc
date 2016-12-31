@@ -18,5 +18,11 @@ int main()
   std::cout << "copy" << std::endl;
   LinkedBinaryTree<char> new_tree(tree);
   new_tree.PreOrderOutput();
+  tree.PreOrder_f();
+  std::cout << std::endl;
+  tree.InOrder_f();
+  std::cout << std::endl;
+  tree.PostOrder_f();
+  std::cout << std::endl;
   return 0;
 }

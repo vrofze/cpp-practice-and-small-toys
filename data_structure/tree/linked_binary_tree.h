@@ -6,6 +6,7 @@
 #include "../queue/array_queue.h"
 
 #include <iostream>
+#include <stack>
 
 /*
   template<class T>
@@ -204,6 +205,10 @@ public:
             LevelOrder(visit, root);
         }
 
+    void PreOrder_f();
+    void InOrder_f();
+    void PostOrder_f();
+
     void erase()
         {
             PostOrder(dispose); // delete node with post order
@@ -267,6 +272,75 @@ void LinkedBinaryTree<T>::InOrder(void (*visit)(BinTreeNode<T> *), BinTreeNode<T
         InOrder(visit, t->left);
         visit(t);
         InOrder(visit, t->right);
+    }
+}
+
+template<class T>
+void LinkedBinaryTree<T>::PreOrder_f()
+{
+    BinTreeNode<T> *p = this->root;
+    std::stack<BinTreeNode<T>*> s;
+    while(p != nullptr || !s.empty()){
+        while(p != nullptr){
+            std::cout << p->element << " ";
+            s.push(p);
+
+            p = p->left;
+        }
+
+        if(!s.empty()){
+            p = s.top();
+            s.pop();
+
+            p = p->right;
+        }
+    }
+}
+
+template<class T>
+void LinkedBinaryTree<T>::InOrder_f()
+{
+    BinTreeNode<T> *p = this->root;
+    std::stack<BinTreeNode<T>*> s;
+    while(p != nullptr || !s.empty()){
+        while(p != nullptr){
+            s.push(p);
+            p = p->left;
+        }
+
+        if(!s.empty()){
+            p = s.top();
+            s.pop();
+            std::cout << p->element << " ";
+
+            p = p->right;
+        }
+    }
+}
+
+template<class T>
+void LinkedBinaryTree<T>::PostOrder_f()
+{
+    std::stack<BinTreeNode<T>*> s;
+    BinTreeNode<T> *curr;
+    BinTreeNode<T> *pre = nullptr;
+    s.push(root);
+    while(!s.empty()){
+        curr = s.top();
+
+        if((curr->left == nullptr && curr->right == nullptr) ||
+           (pre != nullptr && (pre == curr->left || pre == curr->right))){
+            std::cout << curr->element << " ";
+            s.pop();
+
+            pre = curr;
+        }
+        else {
+            if(curr->right != nullptr)
+                s.push(curr->right);
+            if(curr->left != nullptr)
+                s.push(curr->left);
+        }
     }
 }
 
