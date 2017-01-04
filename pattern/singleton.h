@@ -61,7 +61,7 @@ class SingletonLock
 public:
     static SingletonLock *GetInstence()
         {
-            if(instence == nullptr){
+            if(instence == nullptr){ // 双检锁
                 mtx.lock();
                 if(instence == nullptr){
                     instence = new SingletonLock();
