@@ -11,11 +11,18 @@ public:
     double d;
 };
 
+class empty
+{
+
+};
+
 typedef void (Base::*CLASS_FUNC)();
 
 int main()
 {
     Base base;
+    std::cout << "size of class empty:" << sizeof(empty) << std::endl;
+    std::cout << "size of class:" << sizeof(base) << std::endl;
 
     std::cout << "class address:" << &base << std::endl;
 
@@ -35,6 +42,7 @@ int main()
     p_func = &Base::bar;
     tmp = (unsigned int*)&p_func;
 
+    std::cout << "class func bar address:" << std::hex << *tmp << std::endl;
     std::cout << "class func bar address:" << std::hex << *tmp << std::endl;
 
     return 0;
