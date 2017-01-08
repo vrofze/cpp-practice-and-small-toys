@@ -3,14 +3,16 @@
 
 int StrToInt(char *pstr)
 {
-    if(pstr == nullptr)
+    if(pstr == nullptr){
         throw "str is null";
+    }
 
     char *p = pstr;
     bool is_minus = false;
 
-    if(*p == '+')
+    if(*p == '+'){
         ++p;
+    }
     if(*p == '-'){
         is_minus = true;
         ++p;
@@ -25,6 +27,7 @@ int StrToInt(char *pstr)
                 throw "out of index bound";
                 return 0;
             }
+
             ++p;
         }
         else {
